@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "@fontsource-variable/manrope";
 import "@fontsource/ibm-plex-mono/400.css";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
