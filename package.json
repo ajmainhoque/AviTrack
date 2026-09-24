@@ -2,25 +2,67 @@
   "name": "avitrack",
   "version": "0.1.0",
   "private": true,
+  "overrides": { "@esbuild-kit/core-utils": { "esbuild": "^0.25.0" } },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
+    "postinstall": "node scripts/prepare-map-assets.mjs",
+    "predev": "node scripts/prepare-map-assets.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/prepare-map-assets.mjs",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "node scripts/start.mjs",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "format": "prettier --write src scripts tests docs *.md *.json",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "data:sync": "tsx scripts/sync-ourairports.ts"
   },
   "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@tanstack/react-query": "^5.103.1",
+    "@turf/turf": "^7.4.0",
+    "csv-parse": "^7.0.2",
+    "dexie": "^4.4.6",
+    "drizzle-orm": "^0.45.2",
+    "lucide-react": "^1.47.0",
+    "maplibre-gl": "^6.10.0",
     "next": "16.3.5",
+    "pmtiles": "^4.5.0",
+    "postgres": "^3.4.9",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "recharts": "^3.10.1",
+    "suncalc": "^2.0.2",
+    "tz-lookup": "^6.1.25",
+    "zod": "^4.6.5",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^22.20.4",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/suncalc": "^1.9.2",
+    "@types/tz-lookup": "^6.1.2",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "pngjs": "^7.0.0",
+    "prettier": "^3.9.8",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.23.13",
+    "typescript": "^5",
+    "vitest": "^5.0.1"
   }
 }

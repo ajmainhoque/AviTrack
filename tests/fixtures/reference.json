@@ -1,0 +1,76 @@
+{
+  "source": "OurAirports",
+  "syncedAt": 1789800000000,
+  "airports": [
+    {
+      "id": 2434,
+      "ident": "EGLL",
+      "type": "large_airport",
+      "name": "London Heathrow Airport",
+      "latitude_deg": 51.4706,
+      "longitude_deg": -0.461941,
+      "elevation_ft": 83,
+      "iso_country": "GB",
+      "iso_region": "GB-ENG",
+      "municipality": "London",
+      "icao_code": "EGLL",
+      "iata_code": "LHR",
+      "gps_code": "EGLL",
+      "scheduled_service": true
+    },
+    {
+      "id": 3622,
+      "ident": "KJFK",
+      "type": "large_airport",
+      "name": "John F Kennedy International Airport",
+      "latitude_deg": 40.6398,
+      "longitude_deg": -73.7789,
+      "elevation_ft": 13,
+      "iso_country": "US",
+      "iso_region": "US-NY",
+      "municipality": "New York",
+      "icao_code": "KJFK",
+      "iata_code": "JFK",
+      "gps_code": "KJFK",
+      "scheduled_service": true
+    }
+  ],
+  "runways": [
+    {
+      "id": 1,
+      "airport_ref": 2434,
+      "airport_ident": "EGLL",
+      "length_ft": 12799,
+      "width_ft": 164,
+      "surface": "ASP",
+      "lighted": true,
+      "closed": false,
+      "le_ident": "09L",
+      "he_ident": "27R",
+      "le_latitude_deg": 51.4775,
+      "le_longitude_deg": -0.4894,
+      "he_latitude_deg": 51.4775,
+      "he_longitude_deg": -0.433,
+      "le_heading_degT": 90,
+      "he_heading_degT": 270
+    }
+  ],
+  "frequencies": [
+    {
+      "id": 1,
+      "airport_ref": 2434,
+      "airport_ident": "EGLL",
+      "type": "TWR",
+      "description": "Test fixture tower",
+      "frequency_mhz": 118.5
+    }
+  ],
+  "navaids": [],
+  "countries": [
+    { "id": 1, "code": "GB", "name": "United Kingdom" },
+    { "id": 2, "code": "US", "name": "United States" }
+  ],
+  "regions": [
+    { "id": 1, "code": "GB-ENG", "name": "England", "iso_country": "GB" }
+  ]
+}
