@@ -222,9 +222,9 @@ test("unknown routes and stale aircraft remain explicit without fabricated sched
 test("hidden tabs suppress periodic live requests and resume on visibility", async ({ page }) => {
   let requests = 0;
   page.on("request", (request) => { if (new URL(request.url()).pathname === "/api/live") requests++; });
+  await page.clock.install();
   await page.goto("/");
   await expect(page.locator('[data-map-ready="true"]')).toHaveAttribute("data-aircraft-count", "2");
-  await page.clock.install();
   await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" }); Object.defineProperty(document, "hidden", { configurable: true, value: true }); document.dispatchEvent(new Event("visibilitychange")); });
   const before = requests;
   // Exercise polling deadlines without rendering every intervening WebGL frame.
