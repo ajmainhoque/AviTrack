@@ -227,9 +227,11 @@ test("hidden tabs suppress periodic live requests and resume on visibility", asy
   await page.clock.install();
   await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" }); Object.defineProperty(document, "hidden", { configurable: true, value: true }); document.dispatchEvent(new Event("visibilitychange")); });
   const before = requests;
-  await page.clock.runFor(16000);
+  // Exercise polling deadlines without rendering every intervening WebGL frame.
+  // fastForward still fires due timers, so hidden-tab polling remains covered.
+  await page.clock.fastForward(16000);
   expect(requests).toBe(before);
   await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { configurable: true, value: "visible" }); Object.defineProperty(document, "hidden", { configurable: true, value: false }); document.dispatchEvent(new Event("visibilitychange")); });
-  await page.clock.runFor(6000);
+  await page.clock.fastForward(6000);
   await expect.poll(() => requests).toBeGreaterThan(before);
 });
